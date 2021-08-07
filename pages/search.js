@@ -3,6 +3,8 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { format } from 'date-fns';
 import InfoCard from '../components/InfoCard';
+import Map from './../components/Map';
+import Head from 'next/head';
 
 function Search({ resultsData }) {
   const router = useRouter();
@@ -15,8 +17,11 @@ function Search({ resultsData }) {
 
   return (
     <>
+      <Head>
+        <title>{`Search | ${location}`}</title>
+      </Head>
       <Header inputTextPlace={`${location} | ${range} | ${numberOfGuests}`} />
-      <main className="flex">
+      <main className="flex flex-col lg:flex-row mb-8">
         <section className="flex-grow pt-14 px-6">
           <p className="text-xs">
             300+ stays - {range} - for {numberOfGuests} number of guests
@@ -26,15 +31,15 @@ function Search({ resultsData }) {
           </h1>
 
           <div className="hidden lg:inline-flex space-x-3 mb-5 text-gray-800 whitespace-nowrap">
-            <p className="button">Cancellation Flexibility</p>
+            <p className="button shadow-md">Cancellation Flexibility</p>
 
-            <p className="button">Type of Place</p>
+            <p className="button shadow-md">Type of Place</p>
 
-            <p className="button">Price</p>
+            <p className="button shadow-md">Price</p>
 
-            <p className="button">Rooms and Beds</p>
+            <p className="button shadow-md">Rooms and Beds</p>
 
-            <p className="button">More filters</p>
+            <p className="button shadow-md">More filters</p>
           </div>
 
           <div className="flex flex-col">
@@ -51,6 +56,9 @@ function Search({ resultsData }) {
               />
             ))}
           </div>
+        </section>
+        <section className="inline-flex max-w-[300px] lg:min-w-[600px] mx-auto h-96 mt-5 sticky top-32">
+          <Map resultsData={resultsData} />
         </section>
       </main>
       <Footer />
