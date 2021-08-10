@@ -57,7 +57,7 @@ function Search({ resultsData }) {
             ))}
           </div>
         </section>
-        <section className="inline-flex max-w-[300px] lg:min-w-[600px] mx-auto h-96 mt-5 sticky top-32">
+        <section className="inline-flex max-w-[300px] lg:min-w-[600px] mx-auto h-96 mt-5 lg:sticky top-32">
           <Map resultsData={resultsData} />
         </section>
       </main>
