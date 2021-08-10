@@ -4,7 +4,7 @@ import { getCenter } from 'geolib';
 
 const Map = ({ resultsData }) => {
   const [location, setLocation] = useState({});
-  const coordinates = resultsData.map(item => ({
+  const coordinates = resultsData?.map(item => ({
     longitude: item.long,
     latitude: item.lat,
   }));
@@ -26,7 +26,7 @@ const Map = ({ resultsData }) => {
       {...viewport}
       onViewportChange={nextViewport => setViewport(nextViewport)}
     >
-      {resultsData.map(item => (
+      {resultsData?.map(item => (
         <div key={item.long}>
           <Marker
             longitude={item.long}
